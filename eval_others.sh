@@ -1,0 +1,11 @@
+CUDA_VISIBLE_DEVICES=0 python -m baselines.dd_others \
+--model dinov2_vitb \
+--eval_model dinov2_vitb \
+--dataset imagenet-100 \
+--data_root /root/datasets \
+--ipc 1 \
+--syn_path  mgd3/ipc1 \
+--job_tag distillation \
+--random_seed 42 \
+--num_eval 3 \
+--method mgd3
