@@ -12,7 +12,7 @@ class DistillCfg(Tap):
     data_root: str = "your/dataset/path/here"
     statistic_path: str = "your/statistic/path/here.pth"
     job_tag: str = "distillation"
-    method: str = "sfm"
+    method: Literal["lgm", "sfm", "sfm_decouple"] = "sfm"
 
     ipc: int = 1
     lr = 2e-3

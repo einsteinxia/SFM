@@ -36,4 +36,4 @@ class EvalCfg(Tap):
     T: float = 4.0
     alpha: float = 0.5
     method: str = "random"
-    eval_mode: Literal["CI", "KD", "JT", "ST", "normal"] = "normal"
+    eval_mode: Literal["CI", "KD", "normal"] = "normal"

@@ -1,4 +1,4 @@
-# 📝 Efficient Dataset Distillation for Pre-Trained Self-Supervised Models via Statistical Flow Matching [**[arxiv](https://arxiv.org/abs/2602.05391)**]  
+# 📝 Efficient Dataset Distillation for Pre-Trained Self-Supervised Models via Statistical Flow Matching [**[arXiv](https://arxiv.org/abs/2602.05391)**]  
 
 ## 📚 Introduction
 
@@ -29,32 +29,29 @@ pip install -r requirements.txt
 sh get_statistic.sh
 ```
 
-### Get golden Classifier
-
-If Classifier Inheritance (CI) is used, pre-train a classifier on the full dataset and report its performance.
+### Get Pre-trained Classifier
 
 ```sh
 sh get_classifier.sh
+# If Classifier Inheritance (CI) is used, pre-train a classifier on the full dataset and report its performance.
 ```
 
 ### Distillation
 
 ```sh
 sh distill.sh
+# method: Literal["lgm", "sfm", "sfm_decouple"] = "sfm"
 ```
 
 ### Evaluation
 
 ```sh
 sh eval_syn.sh
+# eval_mode: Literal["CI", "KD", "normal"] = "normal"
 ```
 
-eval_mode: Literal["CI", "KD", "JT", "ST", "normal"] = "normal"
-
-
-
 ## 🎉 Acknowledgments
-Our code is developed based on the following codebase: [Dataset Distillation for Pre-Trained Self-Supervised Vision Models]([GeorgeCazenavette/linear-gradient-matching](https://github.com/GeorgeCazenavette/linear-gradient-matching))<br>
+Our code is developed based on the following codebase: [Dataset Distillation for Pre-Trained Self-Supervised Vision Models](https://github.com/GeorgeCazenavette/linear-gradient-matching)<br>
 
 We sincerely thank [George Cazenavette](https://georgecazenavette.github.io/) for his continued contributions to the dataset distillation community.<br>
 
@@ -64,7 +61,7 @@ If you find this work useful, please consider citing:
 ```bibtex
 @article{xia2026efficient,
   title={Efficient Dataset Distillation for Pre-Trained Self-Supervised Models via Statistical Flow Matching},
-  author={Xia, Qianxin and Du, Jiawei and Zhang, Xin and Zhang, Yuhan and Wang, Jielei and Lu, Guoming},
-  journal={NeurIPS},
+  author={Xia, Qianxin and Du, Jiawei and Zhang, Yuhan and Zhang, Xin and He, Xuewan and Jiang, Wenbo and Wang, Jielei and   Luo, Tao and Lu, Guoming},
+  journal={arXiv preprint arXiv:2602.05391},
   year={2026}
 }

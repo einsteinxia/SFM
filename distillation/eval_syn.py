@@ -132,75 +132,6 @@ class Evaluator:
                 / 256.0,  # linear scaling rule
                 weight_decay=0,  # we do not apply weight decay
             )
-        
-        elif self.eval_mode == "JT":
-            self.projector = nn.Linear(self.eval_num_feats, self.distill_num_feats).cuda()
-
-            self.fc = get_fc(
-                num_feats=self.distill_num_feats,
-                num_classes=self.num_classes,
-                distributed=torch.cuda.device_count() > 1,
-            )
-
-            save_info = torch.load(self.classifier_path, weights_only=False)
-            top1_mean = save_info["top1_mean"]
-            top1_std = save_info["top1_std"]
-            top5_mean = save_info["top5_mean"]
-            top5_std = save_info["top5_std"]
-            best_fc_state_dict = save_info["best_fc"]
-            print("Top 1 Mean ± Std: {:.2f} ± {:.2f}".format(top1_mean * 100, top1_std * 100))
-            print("Top 5 Mean ± Std: {:.2f} ± {:.2f}".format(top5_mean * 100, top5_std * 100))
-
-            self.fc.linear.load_state_dict(best_fc_state_dict)
-
-
-            self.fc.linear.requires_grad_(True)
-            self.projector.requires_grad_(True)
-
-            self.optimizer = torch.optim.Adam(
-                list(self.fc.parameters()) + list(self.projector.parameters()),
-                0.001
-                * (self.train_loader.batch_size / torch.cuda.device_count())
-                / 256.0,  # linear scaling rule
-                weight_decay=0,  # we do not apply weight decay
-            )
-
-        elif self.eval_mode == "ST":
-            self.projector = nn.Linear(self.eval_num_feats, self.distill_num_feats).cuda()
-            projector_info = torch.load(os.path.join(self.projector_path, "{}_projector.pth".format(self.eval_model_name)), weights_only=False)
-            self.projector.load_state_dict(projector_info)
-            self.projector.requires_grad_(False)
-
-
-            self.fc = get_fc(
-                num_feats=self.distill_num_feats,
-                num_classes=self.num_classes,
-                distributed=torch.cuda.device_count() > 1,
-            )
-
-            save_info = torch.load(self.classifier_path, weights_only=False)
-            top1_mean = save_info["top1_mean"]
-            top1_std = save_info["top1_std"]
-            top5_mean = save_info["top5_mean"]
-            top5_std = save_info["top5_std"]
-            best_fc_state_dict = save_info["best_fc"]
-            print("Top 1 Mean ± Std: {:.2f} ± {:.2f}".format(top1_mean * 100, top1_std * 100))
-            print("Top 5 Mean ± Std: {:.2f} ± {:.2f}".format(top5_mean * 100, top5_std * 100))
-
-            self.fc.linear.load_state_dict(best_fc_state_dict)
-
-
-            self.fc.linear.requires_grad_(True)
-            
-
-            self.optimizer = torch.optim.Adam(
-                list(self.fc.parameters()) + list(self.projector.parameters()),
-                0.001
-                * (self.train_loader.batch_size / torch.cuda.device_count())
-                / 256.0,  # linear scaling rule
-                weight_decay=0,  # we do not apply weight decay
-            )
-
 
         # self.projector = nn.Linear(self.eval_num_feats, self.distill_num_feats).cuda()
         elif self.eval_mode == "KD":
@@ -233,7 +164,7 @@ class Evaluator:
                 / 256.0,  # linear scaling rule
                 weight_decay=0,  # we do not apply weight decay
             )
-        else:
+        else:   # normal training   --hard labels
             # self.projector = nn.Linear(self.eval_num_feats, self.eval_num_feats).cuda()
             self.fc = get_fc(
                 num_feats=self.eval_num_feats,
