@@ -51,7 +51,7 @@ sh eval_syn.sh
 ```
 
 ## 🎉 Acknowledgments
-Our code is developed based on the following codebase: [Dataset Distillation for Pre-Trained Self-Supervised Vision Models](https://github.com/GeorgeCazenavette/linear-gradient-matching)<br>
+Our code is developed based on the codebase: [Dataset Distillation for Pre-Trained Self-Supervised Vision Models](https://github.com/GeorgeCazenavette/linear-gradient-matching)<br>.
 
 We sincerely thank [George Cazenavette](https://georgecazenavette.github.io/) for his continued contributions to the dataset distillation community.<br>
 
