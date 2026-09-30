@@ -16,7 +16,7 @@ Dataset distillation seeks to synthesize a highly compact surrogate dataset that
 
 ## 🚀 Quick Start
 
-### Create environment and install dependencies
+### Create Environment and Install Dependencies
 ```sh
 conda create -n sfm python=13
 conda activate sfm
