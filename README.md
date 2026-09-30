@@ -61,7 +61,7 @@ If you find this work useful, please consider citing:
 ```bibtex
 @article{xia2026efficient,
   title={Efficient Dataset Distillation for Pre-Trained Self-Supervised Models via Statistical Flow Matching},
-  author={Xia, Qianxin and Du, Jiawei and Zhang, Yuhan and Zhang, Xin and He, Xuewan and Jiang, Wenbo and Wang, Jielei and   Luo, Tao and Lu, Guoming},
+  author={Xia, Qianxin and Du, Jiawei and Zhang, Yuhan and Zhang, Xin and He, Xuewan and Jiang, Wenbo and Wang, Jielei and Luo, Tao and Lu, Guoming},
   journal={arXiv preprint arXiv:2602.05391},
   year={2026}
 }
