@@ -178,9 +178,10 @@ class LinearGM:
 
     def get_flow(self, distribution: Tensor) -> Tensor:
         N, D = distribution.shape
-        target_class = distribution.view(N // self.cfg.ipc, self.cfg.ipc, D).mean(dim=1)
+        num_classes = N // self.cfg.ipc
+        target_class = distribution.view(num_classes, self.cfg.ipc, D).mean(dim=1)
         total_sum = target_class.sum(dim=0, keepdim=True)
-        non_target_class = (total_sum - target_class) / (N - 1)       # (N, D)
+        non_target_class = (total_sum - target_class) / (num_classes  - 1)       # (num_classes, D)
         return target_class, non_target_class, non_target_class - target_class
 
     def get_real_flow(self, distribution: Tensor) -> Tensor:
